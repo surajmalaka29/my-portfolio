@@ -1,0 +1,356 @@
+/* Project Details Page Styles */
+
+/* Hero Section is now using the about-hero class from about.css */
+
+/* Project-specific styles will go below this line */
+
+/* The about-heading class is now used instead of project-heading */
+/* All heading styling is now taken from about.css */
+
+/* Project Details Main */
+.main{
+    background: var(--secondary-color);
+}
+
+.project-details-main {
+  padding: 80px 20px;
+}
+
+.project-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 50px;
+}
+
+.project-description {
+  color: #a9afc3;
+  line-height: 1.8;
+}
+
+.project-description p {
+  margin-bottom: 20px;
+}
+
+/* Project Info Box */
+.project-info-box {
+  background-color: #10101a;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.info-item {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.info-label {
+  font-weight: 600;
+  color: #ffffff;
+  width: 120px;
+  flex-shrink: 0;
+}
+
+.info-value {
+  color: #a9afc3;
+}
+
+/* Screenshots Section */
+.project-screenshots {
+  padding: 50px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.project-screenshots h3 {
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: #ffffff;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.project-screenshots h3::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: var(--accent-color, #ff7e00);
+}
+
+.screenshot-slider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.screenshots-container {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.screenshot {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.screenshot.active {
+  opacity: 1;
+}
+
+.screenshot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.slider-arrow {
+  background: rgba(255, 126, 0, 0.8);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: absolute;
+  z-index: 2;
+  border: none;
+  transition: background 0.3s;
+}
+
+.slider-arrow:hover {
+  background: rgba(255, 126, 0, 1);
+}
+
+.slider-arrow.prev {
+  left: -20px;
+}
+
+.slider-arrow.next {
+  right: -20px;
+}
+
+.screenshot-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #2a2a3a;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.indicator.active {
+  background-color: var(--accent-color, #ff7e00);
+}
+
+/* Project Navigation */
+.project-navigation {
+  display: flex;
+  justify-content: space-between;
+  padding: 50px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.project-navigation a {
+  display: flex;
+  align-items: center;
+  color: #a9afc3;
+  text-decoration: none;
+  transition: color 0.3s;
+  font-weight: 500;
+}
+
+.project-navigation a:hover {
+  color: var(--accent-color, #ff7e00);
+}
+
+.prev-project i,
+.back-to-portfolio i,
+.next-project i {
+  margin: 0 10px;
+}
+
+.back-to-portfolio {
+  padding: 10px 20px;
+  background-color: rgba(255, 126, 0, 0.1);
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.back-to-portfolio:hover {
+  background-color: rgba(255, 126, 0, 0.2);
+}
+
+/* Related Projects */
+.related-projects {
+  padding: 80px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.related-projects h3 {
+  font-size: 28px;
+  margin-bottom: 40px;
+  color: #ffffff;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.related-projects h3::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: var(--accent-color, #ff7e00);
+}
+
+.related-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.related-project-card {
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #10101a;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.related-project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.related-project-image {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.related-project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.related-project-card:hover .related-project-image img {
+  transform: scale(1.05);
+}
+
+.project-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 126, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.related-project-card:hover .project-overlay {
+  opacity: 1;
+}
+
+.project-overlay a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 10px 20px;
+  border: 2px solid white;
+  border-radius: 5px;
+  transition: all 0.3s;
+}
+
+.project-overlay a:hover {
+  background: white;
+  color: var(--accent-color, #ff7e00);
+}
+
+.related-project-card h4 {
+  padding: 15px;
+  text-align: center;
+  font-size: 16px;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .project-container {
+    grid-template-columns: 1fr;
+  }
+
+  /* No need to style project-heading here as we're now using about-heading */
+
+  .related-projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .project-navigation {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .screenshots-container {
+    height: 300px;
+  }
+}
+
+@media (max-width: 576px) {
+  .related-projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* No need to style project-heading here as we're now using about-heading */
+
+  .slider-arrow {
+    width: 30px;
+    height: 30px;
+  }
+
+  .info-item {
+    flex-direction: column;
+  }
+
+  .info-label {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+}

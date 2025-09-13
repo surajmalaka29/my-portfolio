@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Details | Malaka Perera</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/logo.png" />
+    <link rel="apple-touch-icon" href="images/logo.png" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/project-details.css" />
+    <link rel="stylesheet" href="css/about.css" />
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Oxanium:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+
+    <!-- Preloader -->
+    <div class="preloader">
+      <div class="preloader-content">
+        <div class="logo-container">
+          <!-- Original logo used as a reference -->
+          <img
+            src="images/logo.png"
+            alt="Malaka Perera Logo"
+            class="preloader-logo-reference"
+          />
+          <!-- SVG container with path for logo outline animation -->
+          <svg
+            class="logo-outline"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            viewBox="0 0 100 100"
+            width="150"
+            height="150"
+          >
+            <!-- Simple circular outline path that will be visible during animation -->
+            <path
+              class="logo-path"
+              d="M50 10 C25 10, 10 25, 10 50 C10 75, 25 90, 50 90 C75 90, 90 75, 90 50 C90 25, 75 10, 50 10"
+            />
+          </svg>
+          <!-- Filled logo that will be revealed using the mask -->
+          <div class="logo-fill"></div>
+        </div>
+        <div class="preloader-text">Loading...</div>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <header>
+      <nav class="navbar">
+        <div class="logo">
+          <a href="index.html">
+            <img src="images/logo.png" alt="Malaka Perera Logo" />
+          </a>
+        </div>
+        <div class="nav-links">
+          <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="about.html">ABOUT</a></li>
+            <li><a href="index.html#services">SERVICE</a></li>
+            <li><a href="index.html#skills">RESUME</a></li>
+            <li><a href="portfolios.html" class="active">PORTFOLIO</a></li>
+            <li><a href="index.html#contact">CONTACT</a></li>
+          </ul>
+        </div>
+        <div class="cta-button">
+          <a href="CV/Malaka Perera.pdf" download class="btn">Resume</a>
+        </div>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Project Details Hero Section -->
+    <section class="about-hero">
+      <div class="shape-1"></div>
+      <div class="shape-2"></div>
+      <div class="about-hero-title">
+        <div class="section-title">
+          <h2 id="project-name">PROJECT DETAILS</h2>
+        </div>
+        <div class="about-heading" id="project-heading">PROJECT NAME</div>
+      </div>
+    </section>
+
+    <!-- Project Details Main Section -->
+     <section class="main">
+    <section class="project-details-main">
+      <div class="project-container">
+        <!-- Project Description -->
+        <div class="project-description">
+          <p id="project-description-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Metus dis
+            posuere amet tincidunt commodo, velit. Ipsum, hac nibh fermentum
+            nisi, platea condimentum cursus velit dui. Massa volutpat odio
+            facilisis purus sit elementum. Non, sed velit dictum quam. Id risus
+            pharetra est, at rhoncus, nec ullamcorper tincidunt. Id aliquet duis
+            sollicitudin diam, elit sit. Et nisi in libero facilisis sed est.
+            Elit curabitur amet risus bibendum. Posuere et eget.
+          </p>
+
+          <p>
+            Hac nibh fermentum nisi, platea condimentum cursus velit dui. Massa
+            volutpat odio facilisis purus sit elementum. Non, sed velit dictum
+            quam. Id risus pharetra est, at rhoncus, nec ullamcorper tincidunt.
+            Id aliquet duis sollicitudin diam, elit sit. Et nisi in libero
+            facilisis sed est. Elit curabitur amet risus bibendum. Posuere et
+            eget orci, sed velit dictum quam. Id risus pharetra est.
+          </p>
+        </div>
+
+        <!-- Project Info Box -->
+        <div class="project-info-box">
+          <div class="info-item">
+            <div class="info-label">Client</div>
+            <div class="info-value" id="client-name">: Campus Project</div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-label">Role</div>
+            <div class="info-value" id="role-description">
+              : UI / UX Design Frontend Development
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-label">Technologies</div>
+            <div class="info-value" id="technologies-used">
+              : HTML5, SCSS Tailwind CSS Figma
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-label">Project Type</div>
+            <div class="info-value" id="project-type">: Web Development</div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-label">Duration</div>
+            <div class="info-value" id="project-duration">: 5 Months</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project Screenshots Section -->
+    <section class="project-screenshots">
+      <h3>Screenshots</h3>
+
+      <div class="screenshot-slider">
+        <button class="slider-arrow prev" id="prev-screenshot">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+
+        <div class="screenshots-container">
+          <div class="screenshot active" id="screenshot-1">
+            <img src="images/MacBook Air - 3.png" alt="Project Screenshot 1" />
+          </div>
+          <div class="screenshot" id="screenshot-2">
+            <img src="images/MacBook Air - 4.png" alt="Project Screenshot 2" />
+          </div>
+          <div class="screenshot" id="screenshot-3">
+            <img src="images/flex'in.jpeg" alt="Project Screenshot 3" />
+          </div>
+        </div>
+
+        <button class="slider-arrow next" id="next-screenshot">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+
+      <div class="screenshot-indicators">
+        <span class="indicator active" data-index="0"></span>
+        <span class="indicator" data-index="1"></span>
+        <span class="indicator" data-index="2"></span>
+      </div>
+    </section>
+
+    <!-- Project Navigation -->
+    <section class="project-navigation">
+      <a href="#" class="prev-project">
+        <i class="fas fa-arrow-left"></i>
+        <span>Previous Project</span>
+      </a>
+      <a href="portfolios.html" class="back-to-portfolio">
+        <i class="fas fa-th-large"></i>
+        <span>All Projects</span>
+      </a>
+      <a href="#" class="next-project">
+        <span>Next Project</span>
+        <i class="fas fa-arrow-right"></i>
+      </a>
+    </section>
+
+    <!-- Related Projects Section -->
+    <section class="related-projects">
+      <h3>Related Projects</h3>
+
+      <div class="related-projects-grid">
+        <div class="related-project-card">
+          <div class="related-project-image">
+            <img src="images/flex'in.jpeg" alt="Related Project" />
+            <div class="project-overlay">
+              <a href="#">View Details</a>
+            </div>
+          </div>
+          <h4>Web Design Project</h4>
+        </div>
+
+        <div class="related-project-card">
+          <div class="related-project-image">
+            <img src="images/flex'in.jpeg" alt="Related Project" />
+            <div class="project-overlay">
+              <a href="#">View Details</a>
+            </div>
+          </div>
+          <h4>App Development</h4>
+        </div>
+
+        <div class="related-project-card">
+          <div class="related-project-image">
+            <img src="images/flex'in.jpeg" alt="Related Project" />
+            <div class="project-overlay">
+              <a href="#">View Details</a>
+            </div>
+          </div>
+          <h4>UI/UX Design</h4>
+        </div>
+      </div>
+    </section>
+ </section>
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <p>© 2025 Malaka Perera. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+   
+
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
+    <script src="js/project-details.js"></script>
+  </body>
+</html>

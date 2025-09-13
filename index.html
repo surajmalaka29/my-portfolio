@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Malaka Perera | Full-Stack Developer</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/logo.png" />
+    <link rel="apple-touch-icon" href="images/logo.png" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Oxanium:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Preloader -->
+    <div class="preloader">
+      <div class="preloader-content">
+        <div class="logo-container">
+          <!-- Original logo used as a reference -->
+          <img
+            src="images/logo.png"
+            alt="Malaka Perera Logo"
+            class="preloader-logo-reference"
+          />
+          <!-- SVG container with path for logo outline animation -->
+          <svg
+            class="logo-outline"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            viewBox="0 0 100 100"
+            width="150"
+            height="150"
+          >
+            <!-- Simple circular outline path that will be visible during animation -->
+            <path
+              class="logo-path"
+              d="M50 10 C25 10, 10 25, 10 50 C10 75, 25 90, 50 90 C75 90, 90 75, 90 50 C90 25, 75 10, 50 10"
+            />
+          </svg>
+          <!-- Filled logo that will be revealed using the mask -->
+          <div class="logo-fill"></div>
+        </div>
+        <div class="preloader-text">Loading...</div>
+      </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+
+    <!-- Navigation -->
+    <header>
+      <nav class="navbar">
+        <div class="logo">
+          <a href="#home">
+            <img src="images/logo.png" alt="Malaka Perera Logo" />
+          </a>
+        </div>
+        <div class="nav-links">
+          <ul>
+            <li><a href="#home" class="active">HOME</a></li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#services">SERVICES</a></li>
+            <li><a href="portfolios.html">PORTFOLIO</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+          </ul>
+        </div>
+        <div class="cta-button">
+          <a href="CV/Malaka Perera.pdf" download class="btn">Resume</a>
+        </div>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <p class="intro">Hello, I'm</p>
+        <h1 class="name">Malaka Perera</h1>
+        <div class="job-title">
+          <span class="typing"></span>
+          <span class="cursor-typing">|</span>
+        </div>
+        <a href="#contact" class="btn hero-btn">Get In Touch</a>
+        <div class="social-links">
+          <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="hero-image"></div>
+
+      <div class="scroll-down">
+        <a href="#about">
+          <div class="scroll-arrow">
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <span>Scroll Down</span>
+        </a>
+      </div>
+    </section>
+    <!-- About Me Section -->
+    <section id="about" class="about">
+      <div class="section-title">
+        <h2>ABOUT ME</h2>
+      </div>
+      <div class="about-content">
+        <div class="about-image">
+          <!-- About image will be set via CSS -->
+        </div>
+        <div class="about-text">
+          <h3>Hi There! I'm Malaka Perera</h3>
+          <p class="job-description">Full Stack Developer</p>
+          <p class="bio">
+            I am a highly motivated and results-oriented Full Stack Developer
+            with a passion for creating innovative software solutions. With 5+
+            years of hands-on experience in web development, I specialize in
+            building robust, scalable, and user-friendly applications using
+            modern technologies and best practices.
+          </p>
+          <p class="bio">
+            I work closely with clients to understand their requirements,
+            providing tailored solutions that exceed expectations. My expertise
+            spans front-end development, back-end programming, database design,
+            and system architecture.
+          </p>
+          <div class="personal-info">
+            <div class="info-item">
+              <span>Name:</span>
+              <p>Malaka Perera</p>
+            </div>
+            <div class="info-item">
+              <span>Phone:</span>
+              <p>+94 77 26 58 446</p>
+            </div>
+            <div class="info-item">
+              <span>Email:</span>
+              <p>info@malakaperera.live</p>
+            </div>
+            <div class="info-item">
+              <span>Address:</span>
+              <p>Dankotuwa, Sri Lanka</p>
+            </div>
+            <div class="info-item">
+              <span>Language:</span>
+              <p>English, Sinhala</p>
+            </div>
+            <div class="info-item">
+              <span>Experience:</span>
+              <p>0 Years</p>
+            </div>
+          </div>
+          <div class="about-buttons">
+            <a href="CV/Malaka Perera.pdf" download class="btn">Download CV</a>
+            <a href="about.html" class="btn btn-outline">See More</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+      <div class="section-title scroll-animation">
+        <h2>SERVICES</h2>
+      </div>
+      <div class="services-container">
+        <div class="service-card scroll-animation">
+          <div class="service-icon">
+            <img src="images/web dev logo.png" alt="Web Development" />
+          </div>
+          <h3>Web Development</h3>
+          <p>
+            Creating responsive, high-quality websites and web applications
+            using the latest technologies and best practices. Focusing on speed,
+            security, and an exceptional user experience.
+          </p>
+        </div>
+        <div class="service-card scroll-animation">
+          <div class="service-icon">
+            <img src="images/SD logo.png" alt="Software Development" />
+          </div>
+          <h3>Software Development</h3>
+          <p>
+            Building custom software solutions tailored to meet specific
+            business needs. From concept to deployment, creating scalable
+            applications that streamline operations and solve problems.
+          </p>
+        </div>
+        <div class="service-card scroll-animation">
+          <div class="service-icon">
+            <img src="images/UI UX logo.png" alt="UI/UX Design" />
+          </div>
+          <h3>UI/UX Design</h3>
+          <p>
+            Designing intuitive user interfaces and creating engaging user
+            experiences. Focusing on usability, accessibility, and visual
+            aesthetics to deliver products users love.
+          </p>
+        </div>
+        <div class="service-card scroll-animation">
+          <div class="service-icon">
+            <img src="images/APP D Logo.png" alt="App Design" />
+          </div>
+          <h3>App Design</h3>
+          <p>
+            Creating beautiful, functional mobile applications for iOS and
+            Android platforms. Emphasizing intuitive navigation, responsive
+            design, and seamless functionality.
+          </p>
+        </div>
+        <div class="service-card scroll-animation">
+          <div class="service-icon">
+            <img src="images/graphic logo.png" alt="Graphic Design" />
+          </div>
+          <h3>Graphic Design</h3>
+          <p>
+            Delivering creative visual solutions that communicate your brand
+            message effectively. From logos and brand identity to marketing
+            materials and digital assets.
+          </p>
+        </div>
+        <div class="service-card scroll-animation">
+          <div class="service-icon">
+            <img src="images/Network logo.png" alt="Network Design" />
+          </div>
+          <h3>Network Design</h3>
+          <p>
+            Designing and implementing robust, secure, and efficient network
+            infrastructure. Creating solutions that enhance connectivity,
+            improve security, and optimize performance.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+      <div class="section-title scroll-animation">
+        <h2>MY SKILLS</h2>
+      </div>
+      <div class="skills-content">
+        <div class="skills-text scroll-animation">
+          <h3>
+            All the skills that I have in the field of technology are showcased
+            here
+          </h3>
+          <p>
+            Experience in Front-End Development (HTML5, CSS3, React.js), Backend
+            development (Node.js, Express, MongoDB), and more with strong
+            knowledge in multiple programming languages.
+          </p>
+          <p>
+            With a strong passion for continuous learning, I follow trends in
+            web development to stay up-to-date with the latest technologies and
+            best practices.
+          </p>
+        </div>
+        <div class="skills-bars">
+          <div class="skill scroll-animation">
+            <div class="skill-info">
+              <span>Figma</span>
+              <span class="percent">95%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress" data-width="95%"></div>
+            </div>
+          </div>
+          <div class="skill scroll-animation">
+            <div class="skill-info">
+              <span>HTML</span>
+              <span class="percent">90%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress" data-width="90%"></div>
+            </div>
+          </div>
+          <div class="skill scroll-animation">
+            <div class="skill-info">
+              <span>CSS</span>
+              <span class="percent">85%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress" data-width="85%"></div>
+            </div>
+          </div>
+          <div class="skill scroll-animation">
+            <div class="skill-info">
+              <span>Photoshop</span>
+              <span class="percent">80%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress" data-width="80%"></div>
+            </div>
+          </div>
+          <div class="skill scroll-animation">
+            <div class="skill-info">
+              <span>React/React Native</span>
+              <span class="percent">75%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress" data-width="75%"></div>
+            </div>
+          </div>
+          <div class="skill scroll-animation">
+            <div class="skill-info">
+              <span>Final Cut Pro</span>
+              <span class="percent">60%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress" data-width="60%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Favorite Tools Section -->
+    <section id="tools" class="tools">
+      <div class="section-title scroll-animation">
+        <h2>FAVOURITE TOOLS</h2>
+      </div>
+      <div class="tools-grid">
+        <div class="tool-item scroll-animation">
+          <img src="images/react logo.png" alt="React" />
+        </div>
+        <div class="tool-item scroll-animation">
+          <img src="images/Node.js_logo.svg.png" alt="Node.js" />
+        </div>
+        <div class="tool-item scroll-animation">
+          <img src="images/Microsoft_.NET_logo.svg.png" alt=".NET" />
+        </div>
+        <div class="tool-item scroll-animation">
+          <img src="images/PHP-logo.svg.png" alt="PHP" />
+        </div>
+        <div class="tool-item scroll-animation">
+          <img src="images/sql logo.png" alt="SQL" />
+        </div>
+        <div class="tool-item scroll-animation">
+          <img src="images/mongodb logo.png" alt="MongoDB" />
+        </div>
+        <div class="tool-item scroll-animation">
+          <img
+            src="images/tailwind-css-logo-png_seeklogo-434090.png"
+            alt="Tailwind CSS"
+          />
+        </div>
+        <div class="tool-item scroll-animation">
+          <img src="images/packet tracer logo.png" alt="Packet Tracer" />
+        </div>
+        <div class="tool-item scroll-animation">
+          <img src="images/Figma logo.png" alt="Figma" />
+        </div>
+        <div class="tool-item scroll-animation">
+          <img src="images/photoshop logo.png" alt="Photoshop" />
+        </div>
+        <div class="tool-item scroll-animation">
+          <img src="images/github logo.png" alt="GitHub" />
+        </div>
+        <div class="tool-item scroll-animation">
+          <img src="images/notion logo.png" alt="Notion" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+      <div class="section-title scroll-animation">
+        <h2>PORTFOLIOS</h2>
+      </div>
+      <div class="portfolio-grid">
+        <!-- Portfolio Item 1 -->
+        <div class="portfolio-item scroll-animation">
+          <div class="portfolio-image">
+            <img src="images/flex'in.jpeg" alt="Project 2" />
+          </div>
+          <div class="portfolio-info">
+            <h3>E-Commerce Platform</h3>
+            <p>
+              A full-featured e-commerce solution built with React, Node.js, and
+              MongoDB. Includes user authentication, product management, and
+              payment integration.
+            </p>
+
+            <div class="portfolio-links">
+              <button class="portfolio-link">
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Portfolio Item 2 -->
+        <div class="portfolio-item scroll-animation">
+          <div class="portfolio-image">
+            <img src="images/flex'in.jpeg" alt="Project 2" />
+          </div>
+          <div class="portfolio-info">
+            <h3>Travel App</h3>
+            <p>
+              A mobile-first travel application built with React Native that
+              helps users plan trips, discover destinations, and share
+              experiences with others.
+            </p>
+            <div class="portfolio-links">
+              <button class="portfolio-link">
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Portfolio Item 3 -->
+        <div class="portfolio-item scroll-animation">
+          <div class="portfolio-image">
+            <img src="images/pic 3.jpg" alt="Project 3" />
+          </div>
+          <div class="portfolio-info">
+            <h3>Task Management System</h3>
+            <p>
+              A comprehensive task management solution designed for teams with
+              real-time updates, task assignments, and progress tracking
+              features.
+            </p>
+            <div class="portfolio-links">
+              <button class="portfolio-link">
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="view-more">
+        <a href="portfolios.html" class="btn">View More</a>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+      <div class="section-title scroll-animation">
+        <h2>CONTACT ME</h2>
+      </div>
+      <div class="contact-container">
+        <div class="contact-form scroll-animation">
+          <h3>Just say Hello</h3>
+          <form id="contactForm">
+            <div class="form-group">
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Your Name"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Your Email"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                placeholder="Subject"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <textarea
+                id="message"
+                name="message"
+                placeholder="Your Message"
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="btn btn-submit">Send Message</button>
+          </form>
+        </div>
+        <div class="contact-info scroll-animation">
+          <h3>Contact Info</h3>
+          <p>
+            Let's connect! Whether it's a project collaboration, job
+            opportunity, or just a general inquiry, feel free to reach out and
+            get connected.
+          </p>
+          <div class="info-item">
+            <div class="icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="details">
+              <h4>E-mail</h4>
+              <p>hello@malakaperera.me</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div class="details">
+              <h4>Phone</h4>
+              <p>+94 77 XX XX XX</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="details">
+              <h4>Address</h4>
+              <p>Colombo, Sri Lanka</p>
+            </div>
+          </div>
+          <div class="social-links-contact">
+            <p>Find me on social media and get connected</p>
+            <div class="social-icons">
+              <a href="#" class="social-icon"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="social-icon"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" class="social-icon"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <p>© 2025 Malaka Perera. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
+  </body>
+</html>
