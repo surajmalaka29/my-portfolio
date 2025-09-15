@@ -8,8 +8,8 @@
 /* All heading styling is now taken from about.css */
 
 /* Project Details Main */
-.main{
-    background: var(--secondary-color);
+.main {
+  background: var(--secondary-color);
 }
 
 .project-details-main {
@@ -55,6 +55,34 @@
 
 .info-value {
   color: #a9afc3;
+}
+
+/* GitHub Button */
+.github-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background-color: #24292e;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 2px solid #24292e;
+}
+
+.github-btn:hover {
+  background-color: #ffffff;
+  color: #24292e;
+  border-color: #24292e;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(36, 41, 46, 0.2);
+}
+
+.github-btn i {
+  font-size: 16px;
 }
 
 /* Screenshots Section */

@@ -10,6 +10,7 @@ const projectData = {
     type: "Web Development",
     duration: "5 Months",
     category: "App Development",
+    githubLink: "https://github.com/surajmalaka29/flexin-app",
     screenshots: [
       "images/flex'in.jpeg",
       "images/MacBook Air - 3.png",
@@ -29,6 +30,7 @@ const projectData = {
     type: "Mobile App Development",
     duration: "4 Months",
     category: "App Development",
+    githubLink: "https://github.com/surajmalaka29/mobile-app-project",
     screenshots: [
       "images/MacBook Air - 4.png",
       "images/flex'in.jpeg",
@@ -48,6 +50,7 @@ const projectData = {
     type: "UI/UX Design",
     duration: "3 Months",
     category: "UI / UX Design",
+    githubLink: "https://github.com/surajmalaka29/ui-ux-design-system",
     screenshots: [
       "images/flex'in.jpeg",
       "images/MacBook Air - 3.png",
@@ -67,6 +70,7 @@ const projectData = {
     type: "Web Development",
     duration: "6 Months",
     category: "App Development",
+    githubLink: "https://github.com/surajmalaka29/fullstack-web-app",
     screenshots: [
       "images/MacBook Air - 3.png",
       "images/flex'in.jpeg",
@@ -86,6 +90,7 @@ const projectData = {
     type: "E-Commerce Development",
     duration: "8 Months",
     category: "App Development",
+    githubLink: "https://github.com/surajmalaka29/ecommerce-platform",
     screenshots: [
       "images/MacBook Air - 4.png",
       "images/MacBook Air - 3.png",
@@ -105,6 +110,7 @@ const projectData = {
     type: "Graphic Design",
     duration: "Ongoing",
     category: "Graphic Design",
+    githubLink: "https://github.com/surajmalaka29/graphic-design-portfolio",
     screenshots: [
       "images/flex'in.jpeg",
       "images/MacBook Air - 4.png",

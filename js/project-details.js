@@ -105,6 +105,40 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("project-duration").textContent =
       ": " + project.duration;
 
+    // Update GitHub link
+    const githubLink = document.getElementById("github-link");
+    console.log("GitHub link element found:", githubLink); // Debug log
+
+    if (githubLink && project.githubLink) {
+      console.log("Setting GitHub link to:", project.githubLink); // Debug log
+      githubLink.href = project.githubLink;
+      githubLink.style.display = "inline-flex";
+
+      // Remove any existing event listeners
+      githubLink.replaceWith(githubLink.cloneNode(true));
+      const newGithubLink = document.getElementById("github-link");
+
+      // Add click event listener as backup
+      newGithubLink.addEventListener("click", function (e) {
+        console.log("GitHub button clicked, opening:", project.githubLink);
+        // Don't prevent default, let the normal link behavior work
+        // But also try window.open as backup
+        setTimeout(() => {
+          if (!document.hasFocus()) {
+            // If page lost focus, the link probably worked
+            return;
+          }
+          // Otherwise, try window.open
+          window.open(project.githubLink, "_blank", "noopener,noreferrer");
+        }, 100);
+      });
+    } else if (githubLink) {
+      console.log("No GitHub link found for project:", projectId); // Debug log
+      githubLink.style.display = "none";
+    } else {
+      console.error("GitHub link element not found in DOM");
+    }
+
     // Update navigation links
     document.querySelector(
       ".prev-project"
