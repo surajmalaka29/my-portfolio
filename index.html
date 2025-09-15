@@ -4,14 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Malaka Perera | Full-Stack Developer</title>
-   
-       <!-- Favicon -->
-<link rel="icon" type="image/png" href="/images/favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
-<link rel="shortcut icon" href="/images/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
-<meta name="apple-mobile-web-app-title" content="Malaka Perera" />
-<link rel="manifest" href="/images/site.webmanifest" />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/png"
+      href="/images/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
+    <link rel="shortcut icon" href="/images/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/images/apple-touch-icon.png"
+    />
+    <meta name="apple-mobile-web-app-title" content="Malaka Perera" />
+    <link rel="manifest" href="/images/site.webmanifest" />
     <link rel="stylesheet" href="css/styles.css" />
     <!-- Font Awesome for icons -->
     <link
@@ -163,10 +172,10 @@
               <span>Language:</span>
               <p>English, Sinhala</p>
             </div>
-            <div class="info-item">
+            <!-- <div class="info-item">
               <span>Experience:</span>
               <p>0 Years</p>
-            </div>
+            </div> -->
           </div>
           <div class="about-buttons">
             <a href="CV/Malaka Perera.pdf" download class="btn">Download CV</a>
@@ -304,6 +313,15 @@
           <div class="skill scroll-animation">
             <div class="skill-info">
               <span>Photoshop</span>
+              <span class="percent">90%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress" data-width="90%"></div>
+            </div>
+          </div>
+          <div class="skill scroll-animation">
+            <div class="skill-info">
+              <span>Cisco Packet Tracer</span>
               <span class="percent">80%</span>
             </div>
             <div class="progress-bar">
@@ -312,20 +330,11 @@
           </div>
           <div class="skill scroll-animation">
             <div class="skill-info">
-              <span>React/React Native</span>
-              <span class="percent">75%</span>
-            </div>
-            <div class="progress-bar">
-              <div class="progress" data-width="75%"></div>
-            </div>
-          </div>
-          <div class="skill scroll-animation">
-            <div class="skill-info">
               <span>Final Cut Pro</span>
-              <span class="percent">60%</span>
+              <span class="percent">85%</span>
             </div>
             <div class="progress-bar">
-              <div class="progress" data-width="60%"></div>
+              <div class="progress" data-width="85%"></div>
             </div>
           </div>
         </div>
@@ -467,6 +476,7 @@
                 placeholder="Your Name"
                 required
               />
+              <div class="error-message">Please enter your name</div>
             </div>
             <div class="form-group">
               <input
@@ -476,6 +486,20 @@
                 placeholder="Your Email"
                 required
               />
+              <div class="error-message">
+                Please enter a valid email address
+              </div>
+            </div>
+            <div class="form-group">
+              <input
+                type="tel"
+                id="mobile"
+                name="mobile"
+                placeholder="Mobile Number (Optional)"
+              />
+              <div class="error-message">
+                Please enter a valid mobile number
+              </div>
             </div>
             <div class="form-group">
               <input
@@ -485,6 +509,7 @@
                 placeholder="Subject"
                 required
               />
+              <div class="error-message">Please enter a subject</div>
             </div>
             <div class="form-group">
               <textarea
@@ -492,7 +517,9 @@
                 name="message"
                 placeholder="Your Message"
                 required
+                rows="5"
               ></textarea>
+              <div class="error-message">Please enter your message</div>
             </div>
             <button type="submit" class="btn btn-submit">Send Message</button>
           </form>
@@ -558,6 +585,11 @@
     </footer>
 
     <!-- JavaScript -->
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+    <script src="js/email-config.js"></script>
     <script src="js/script.js"></script>
   </body>
 </html>

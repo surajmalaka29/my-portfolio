@@ -229,34 +229,205 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Form submission with validation
+  // Initialize EmailJS
+  (function () {
+    // Check if EMAIL_CONFIG is available and has required values
+    if (
+      typeof EMAIL_CONFIG !== "undefined" &&
+      EMAIL_CONFIG.PUBLIC_KEY !== "YOUR_PUBLIC_KEY_HERE"
+    ) {
+      emailjs.init(EMAIL_CONFIG.PUBLIC_KEY);
+      console.log(
+        "EmailJS initialized successfully with key:",
+        EMAIL_CONFIG.PUBLIC_KEY
+      );
+    } else {
+      console.warn(
+        "EmailJS not configured. Please set up email-config.js with your EmailJS credentials."
+      );
+    }
+  })();
+
+  // Form submission with validation and email sending
   if (contactForm) {
+    // Add real-time validation
+    const formInputs = contactForm.querySelectorAll("input, textarea");
+
+    formInputs.forEach((input) => {
+      input.addEventListener("blur", function () {
+        validateField(this);
+      });
+
+      input.addEventListener("input", function () {
+        // Remove error state when user starts typing
+        const formGroup = this.closest(".form-group");
+        formGroup.classList.remove("error");
+      });
+    });
+
     contactForm.addEventListener("submit", function (e) {
       e.preventDefault();
 
       // Get form values
       const name = document.getElementById("name").value.trim();
       const email = document.getElementById("email").value.trim();
+      const mobile = document.getElementById("mobile").value.trim();
       const subject = document.getElementById("subject").value.trim();
       const message = document.getElementById("message").value.trim();
 
-      // Simple validation
-      if (name === "" || email === "" || subject === "" || message === "") {
-        showNotification("Please fill in all fields", "error");
+      // Validate all fields
+      let isValid = true;
+
+      if (!validateField(document.getElementById("name"))) isValid = false;
+      if (!validateField(document.getElementById("email"))) isValid = false;
+      if (!validateField(document.getElementById("mobile"))) isValid = false;
+      if (!validateField(document.getElementById("subject"))) isValid = false;
+      if (!validateField(document.getElementById("message"))) isValid = false;
+
+      if (!isValid) {
+        showNotification("Please fix the errors above", "error");
         return;
       }
 
-      // Email validation
-      if (!isValidEmail(email)) {
-        showNotification("Please enter a valid email address", "error");
+      // Show loading state
+      const submitBtn = contactForm.querySelector(".btn-submit");
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = "Sending...";
+      submitBtn.disabled = true;
+
+      // Prepare email parameters
+      const templateParams = {
+        from_name: name,
+        from_email: email,
+        mobile: mobile || "Not provided",
+        subject: subject,
+        message: message,
+        to_name: "Malaka Perera",
+        reply_to: email,
+        timestamp: new Date().toISOString(),
+      };
+
+      // Send email using EmailJS
+      // Check if EmailJS is properly configured
+      if (
+        typeof EMAIL_CONFIG === "undefined" ||
+        EMAIL_CONFIG.PUBLIC_KEY === "YOUR_PUBLIC_KEY_HERE" ||
+        EMAIL_CONFIG.SERVICE_ID === "YOUR_SERVICE_ID_HERE" ||
+        EMAIL_CONFIG.TEMPLATE_ID === "YOUR_TEMPLATE_ID_HERE"
+      ) {
+        console.warn("EmailJS not fully configured, falling back to mailto");
+        // Fallback to mailto if EmailJS is not configured
+        const mailtoBody = `From: ${name} (${email})${
+          mobile ? `\nMobile: ${mobile}` : ""
+        }\n\n${message}`;
+        const mailtoLink = `mailto:info@malakaperera.live?subject=${encodeURIComponent(
+          subject
+        )}&body=${encodeURIComponent(mailtoBody)}`;
+
+        window.location.href = mailtoLink;
+        showNotification("Opening your email client...", "success");
+
+        // Reset button state
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
         return;
       }
 
-      // Simulating form submission
-      // In a real application, you would send this data to a server
-      showNotification("Thank you! Your message has been sent.", "success");
-      contactForm.reset();
+      console.log("Sending email via EmailJS with config:", {
+        service: EMAIL_CONFIG.SERVICE_ID,
+        template: EMAIL_CONFIG.TEMPLATE_ID,
+        params: templateParams,
+      });
+
+      emailjs
+        .send(EMAIL_CONFIG.SERVICE_ID, EMAIL_CONFIG.TEMPLATE_ID, templateParams)
+        .then(
+          function (response) {
+            console.log(
+              "Email sent successfully!",
+              response.status,
+              response.text
+            );
+            showNotification(
+              "Thank you! Your message has been sent successfully. I'll get back to you soon!",
+              "success"
+            );
+            contactForm.reset();
+
+            // Remove any validation states
+            formInputs.forEach((input) => {
+              const formGroup = input.closest(".form-group");
+              formGroup.classList.remove("error", "success");
+            });
+
+            // Track successful form submission (optional analytics)
+            if (typeof gtag !== "undefined") {
+              gtag("event", "form_submit", {
+                event_category: "Contact",
+                event_label: "Contact Form",
+              });
+            }
+          },
+          function (error) {
+            console.error("Failed to send email:", error);
+
+            // Fallback: Try to open email client
+            const mailtoLink = `mailto:info@malakaperera.live?subject=${encodeURIComponent(
+              subject
+            )}&body=${encodeURIComponent(
+              `From: ${name} (${email})\n\n${message}`
+            )}`;
+
+            if (
+              confirm(
+                "Email service temporarily unavailable. Would you like to open your email client instead?"
+              )
+            ) {
+              window.location.href = mailtoLink;
+              showNotification("Opening your email client...", "success");
+            } else {
+              showNotification(
+                "Failed to send message. Please try again or contact us directly at info@malakaperera.live",
+                "error"
+              );
+            }
+          }
+        )
+        .finally(function () {
+          // Reset button state
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
+        });
     });
+  }
+
+  // Field validation function
+  function validateField(field) {
+    const formGroup = field.closest(".form-group");
+    const value = field.value.trim();
+    let isValid = true;
+
+    // Remove previous states
+    formGroup.classList.remove("error", "success");
+
+    if (value === "") {
+      // Mobile field is optional, so don't mark as error if empty
+      if (field.id === "mobile") {
+        return true;
+      }
+      formGroup.classList.add("error");
+      isValid = false;
+    } else if (field.type === "email" && !isValidEmail(value)) {
+      formGroup.classList.add("error");
+      isValid = false;
+    } else if (field.type === "tel" && !isValidMobile(value)) {
+      formGroup.classList.add("error");
+      isValid = false;
+    } else {
+      formGroup.classList.add("success");
+    }
+
+    return isValid;
   }
 
   // Helper function to validate email
@@ -265,6 +436,24 @@ document.addEventListener("DOMContentLoaded", function () {
       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
   }
+
+  // Helper function to validate mobile number
+ function isValidMobile(mobile) {
+   // Remove all non-digit characters
+   const cleanMobile = mobile.replace(/\D/g, "");
+
+   // Sri Lankan local format: must start with 0 and be exactly 10 digits
+   const sriLankaPattern = /^0\d{9}$/;
+
+   // International format: 8–15 digits (e.g., +94772658446)
+   const internationalPattern = /^\+?[1-9]\d{7,14}$/;
+
+   // Check both cases
+   return (
+     sriLankaPattern.test(cleanMobile) || internationalPattern.test(mobile)
+   );
+ }
+
 
   // Notification function
   function showNotification(message, type) {
