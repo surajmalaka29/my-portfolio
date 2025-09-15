@@ -77,48 +77,15 @@ document.addEventListener("DOMContentLoaded", function () {
   const projectId = getProjectFromUrl() || "flexin"; // Default to flexin project if none specified
   loadProjectData(projectId);
 
-  // Function to load project data - in a real implementation, this would fetch from a data source
+  // Function to load project data
   function loadProjectData(projectId) {
-    // This is a simplified example - in a real application, you would fetch this data from a server or JSON file
-    const projectData = {
-      flexin: {
-        name: "Flex'In",
-        heading: "FLEX'IN",
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Metus dis posuere amet tincidunt commodo, velit. Ipsum, hac nibh fermentum nisi, platea condimentum cursus velit dui. Massa volutpat odio facilisis purus sit elementum. Non, sed velit dictum quam. Id risus pharetra est, at rhoncus, nec ullamcorper tincidunt.",
-        client: "Campus Project",
-        role: "UI / UX Design\nFrontend Development",
-        technologies: "HTML5, SCSS\nTailwind CSS\nFigma",
-        type: "Web Development",
-        duration: "5 Months",
-        screenshots: [
-          "images/flex'in.jpeg",
-          "images/MacBook Air - 3.png",
-          "images/MacBook Air - 4.png",
-        ],
-        prevProject: "project5",
-        nextProject: "project2",
-      },
-      project2: {
-        name: "Mobile App",
-        heading: "MOBILE APP",
-        description:
-          "A comprehensive mobile application built for both iOS and Android platforms using React Native. This project focused on creating a seamless user experience with robust backend integration.",
-        client: "Startup Client",
-        role: "Full-Stack Developer\nUI Designer",
-        technologies: "React Native\nFirebase\nNode.js",
-        type: "Mobile App Development",
-        duration: "4 Months",
-        screenshots: [
-          "images/MacBook Air - 4.png",
-          "images/flex'in.jpeg",
-          "images/MacBook Air - 3.png",
-        ],
-        prevProject: "flexin",
-        nextProject: "project3",
-      },
-      // Add more projects as needed
-    };
+    // Use the projectData from data.js
+    if (typeof projectData === "undefined") {
+      console.error(
+        "Project data not loaded. Make sure data.js is included before this script."
+      );
+      return;
+    }
 
     // Get the selected project data or use default
     const project = projectData[projectId] || projectData.flexin;
@@ -146,7 +113,74 @@ document.addEventListener("DOMContentLoaded", function () {
       ".next-project"
     ).href = `project-details.html?project=${project.nextProject}`;
 
-    // Update screenshots (if needed)
-    // This would require more complex DOM manipulation to update the screenshot sources
+    // Update screenshots if different from default
+    updateScreenshots(project.screenshots);
+
+    // Update related projects
+    updateRelatedProjects(projectId);
+  }
+
+  // Function to update screenshots
+  function updateScreenshots(screenshots) {
+    if (screenshots && screenshots.length > 0) {
+      const screenshotElements = document.querySelectorAll(".screenshot img");
+      const indicatorsContainer = document.querySelector(
+        ".screenshot-indicators"
+      );
+
+      // Update existing screenshots
+      screenshotElements.forEach((img, index) => {
+        if (screenshots[index]) {
+          img.src = screenshots[index];
+          img.alt = `Project Screenshot ${index + 1}`;
+        }
+      });
+
+      // Update indicators if needed
+      const indicators = document.querySelectorAll(".indicator");
+      indicators.forEach((indicator, index) => {
+        if (index < screenshots.length) {
+          indicator.style.display = "inline-block";
+        } else {
+          indicator.style.display = "none";
+        }
+      });
+    }
+  }
+
+  // Function to update related projects
+  function updateRelatedProjects(currentProjectId) {
+    const relatedProjectsGrid = document.querySelector(
+      ".related-projects-grid"
+    );
+    if (!relatedProjectsGrid) return;
+
+    // Get all projects except the current one
+    const allProjects = Object.keys(projectData).filter(
+      (id) => id !== currentProjectId
+    );
+
+    // Select 3 random projects for related projects
+    const relatedProjects = allProjects.slice(0, 3);
+
+    // Clear existing related projects
+    relatedProjectsGrid.innerHTML = "";
+
+    // Create related project cards
+    relatedProjects.forEach((projectId) => {
+      const project = projectData[projectId];
+      const cardHtml = `
+        <div class="related-project-card">
+          <div class="related-project-image">
+            <img src="${project.screenshots[0]}" alt="Related Project" />
+            <div class="project-overlay">
+              <a href="project-details.html?project=${projectId}">View Details</a>
+            </div>
+          </div>
+          <h4>${project.name}</h4>
+        </div>
+      `;
+      relatedProjectsGrid.innerHTML += cardHtml;
+    });
   }
 });
