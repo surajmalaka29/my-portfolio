@@ -57,23 +57,28 @@
   color: #a9afc3;
 }
 
-/* GitHub Button */
-.github-btn {
+/* Project Link Button (GitHub/Figma) */
+.project-btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   padding: 10px 20px;
-  background-color: #24292e;
   color: #ffffff;
   text-decoration: none;
   border-radius: 6px;
   font-size: 14px;
   font-weight: 500;
   transition: all 0.3s ease;
-  border: 2px solid #24292e;
+  border: 2px solid;
 }
 
-.github-btn:hover {
+/* GitHub Button Styling */
+.project-btn.github {
+  background-color: #24292e;
+  border-color: #24292e;
+}
+
+.project-btn.github:hover {
   background-color: #ffffff;
   color: #24292e;
   border-color: #24292e;
@@ -81,7 +86,21 @@
   box-shadow: 0 4px 12px rgba(36, 41, 46, 0.2);
 }
 
-.github-btn i {
+/* Figma Button Styling */
+.project-btn.figma {
+  background-color: #f24e1e;
+  border-color: #f24e1e;
+}
+
+.project-btn.figma:hover {
+  background-color: #ffffff;
+  color: #f24e1e;
+  border-color: #f24e1e;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(242, 78, 30, 0.2);
+}
+
+.project-btn i {
   font-size: 16px;
 }
 

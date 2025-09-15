@@ -105,38 +105,67 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("project-duration").textContent =
       ": " + project.duration;
 
-    // Update GitHub link
-    const githubLink = document.getElementById("github-link");
-    console.log("GitHub link element found:", githubLink); // Debug log
+    // Update Project Link (GitHub or Figma based on category)
+    const projectLinkContainer = document.getElementById(
+      "project-link-container"
+    );
+    const projectLinkLabel = document.getElementById("project-link-label");
+    const projectLink = document.getElementById("project-link");
+    const projectLinkIcon = document.getElementById("project-link-icon");
+    const projectLinkText = document.getElementById("project-link-text");
 
-    if (githubLink && project.githubLink) {
-      console.log("Setting GitHub link to:", project.githubLink); // Debug log
-      githubLink.href = project.githubLink;
-      githubLink.style.display = "inline-flex";
+    console.log("Project link elements found:", {
+      container: projectLinkContainer,
+      link: projectLink,
+      category: project.category,
+    });
 
-      // Remove any existing event listeners
-      githubLink.replaceWith(githubLink.cloneNode(true));
-      const newGithubLink = document.getElementById("github-link");
+    if (projectLink) {
+      // Check if this is a UI/UX Design project
+      if (project.category === "UI / UX Design" && project.figmaLink) {
+        console.log("Setting Figma link to:", project.figmaLink);
+        projectLinkLabel.textContent = "Figma";
+        projectLink.href = project.figmaLink;
+        projectLink.className = "project-btn figma";
+        projectLinkIcon.className = "fab fa-figma";
+        projectLinkText.textContent = "View on Figma";
+        projectLinkContainer.style.display = "flex";
 
-      // Add click event listener as backup
-      newGithubLink.addEventListener("click", function (e) {
-        console.log("GitHub button clicked, opening:", project.githubLink);
-        // Don't prevent default, let the normal link behavior work
-        // But also try window.open as backup
-        setTimeout(() => {
-          if (!document.hasFocus()) {
-            // If page lost focus, the link probably worked
-            return;
-          }
-          // Otherwise, try window.open
-          window.open(project.githubLink, "_blank", "noopener,noreferrer");
-        }, 100);
-      });
-    } else if (githubLink) {
-      console.log("No GitHub link found for project:", projectId); // Debug log
-      githubLink.style.display = "none";
+        // Add click event listener
+        projectLink.addEventListener("click", function (e) {
+          console.log("Figma button clicked, opening:", project.figmaLink);
+          setTimeout(() => {
+            if (!document.hasFocus()) {
+              return;
+            }
+            window.open(project.figmaLink, "_blank", "noopener,noreferrer");
+          }, 100);
+        });
+      } else if (project.githubLink) {
+        console.log("Setting GitHub link to:", project.githubLink);
+        projectLinkLabel.textContent = "GitHub";
+        projectLink.href = project.githubLink;
+        projectLink.className = "project-btn github";
+        projectLinkIcon.className = "fab fa-github";
+        projectLinkText.textContent = "View on GitHub";
+        projectLinkContainer.style.display = "flex";
+
+        // Add click event listener
+        projectLink.addEventListener("click", function (e) {
+          console.log("GitHub button clicked, opening:", project.githubLink);
+          setTimeout(() => {
+            if (!document.hasFocus()) {
+              return;
+            }
+            window.open(project.githubLink, "_blank", "noopener,noreferrer");
+          }, 100);
+        });
+      } else {
+        console.log("No GitHub or Figma link found for project:", projectId);
+        projectLinkContainer.style.display = "none";
+      }
     } else {
-      console.error("GitHub link element not found in DOM");
+      console.error("Project link element not found in DOM");
     }
 
     // Update navigation links
