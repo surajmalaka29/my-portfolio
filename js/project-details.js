@@ -4,69 +4,6 @@
  */
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Screenshots slider functionality
-  const screenshots = document.querySelectorAll(".screenshot");
-  const indicators = document.querySelectorAll(".indicator");
-  const prevBtn = document.getElementById("prev-screenshot");
-  const nextBtn = document.getElementById("next-screenshot");
-  let currentIndex = 0;
-
-  // Function to show a specific screenshot
-  function showScreenshot(index) {
-    // Remove active class from all screenshots and indicators
-    screenshots.forEach((screenshot) => screenshot.classList.remove("active"));
-    indicators.forEach((indicator) => indicator.classList.remove("active"));
-
-    // Add active class to the current screenshot and indicator
-    screenshots[index].classList.add("active");
-    indicators[index].classList.add("active");
-
-    // Update current index
-    currentIndex = index;
-  }
-
-  // Previous button click
-  prevBtn.addEventListener("click", () => {
-    let newIndex = currentIndex - 1;
-    if (newIndex < 0) {
-      newIndex = screenshots.length - 1; // Loop back to the end
-    }
-    showScreenshot(newIndex);
-  });
-
-  // Next button click
-  nextBtn.addEventListener("click", () => {
-    let newIndex = currentIndex + 1;
-    if (newIndex >= screenshots.length) {
-      newIndex = 0; // Loop back to the beginning
-    }
-    showScreenshot(newIndex);
-  });
-
-  // Indicator clicks
-  indicators.forEach((indicator, index) => {
-    indicator.addEventListener("click", () => {
-      showScreenshot(index);
-    });
-  });
-
-  // Auto-advance the slider every 5 seconds (optional)
-  const autoAdvance = setInterval(() => {
-    let newIndex = currentIndex + 1;
-    if (newIndex >= screenshots.length) {
-      newIndex = 0;
-    }
-    showScreenshot(newIndex);
-  }, 5000);
-
-  // Stop auto-advance when user interacts with the slider
-  const sliderElements = [prevBtn, nextBtn, ...indicators];
-  sliderElements.forEach((element) => {
-    element.addEventListener("click", () => {
-      clearInterval(autoAdvance);
-    });
-  });
-
   // Get URL parameters to load specific project
   function getProjectFromUrl() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -186,29 +123,108 @@ document.addEventListener("DOMContentLoaded", function () {
   // Function to update screenshots
   function updateScreenshots(screenshots) {
     if (screenshots && screenshots.length > 0) {
-      const screenshotElements = document.querySelectorAll(".screenshot img");
+      const screenshotsContainer = document.querySelector(
+        ".screenshots-container"
+      );
       const indicatorsContainer = document.querySelector(
         ".screenshot-indicators"
       );
 
-      // Update existing screenshots
-      screenshotElements.forEach((img, index) => {
-        if (screenshots[index]) {
-          img.src = screenshots[index];
-          img.alt = `Project Screenshot ${index + 1}`;
-        }
+      // Clear existing screenshots and indicators
+      screenshotsContainer.innerHTML = "";
+      indicatorsContainer.innerHTML = "";
+
+      // Create new screenshot elements for all images
+      screenshots.forEach((imageSrc, index) => {
+        // Create screenshot element
+        const screenshotDiv = document.createElement("div");
+        screenshotDiv.className = `screenshot ${index === 0 ? "active" : ""}`;
+        screenshotDiv.id = `screenshot-${index + 1}`;
+
+        const img = document.createElement("img");
+        img.src = imageSrc;
+        img.alt = `Project Screenshot ${index + 1}`;
+
+        screenshotDiv.appendChild(img);
+        screenshotsContainer.appendChild(screenshotDiv);
+
+        // Create indicator element
+        const indicator = document.createElement("span");
+        indicator.className = `indicator ${index === 0 ? "active" : ""}`;
+        indicator.setAttribute("data-index", index);
+        indicatorsContainer.appendChild(indicator);
       });
 
-      // Update indicators if needed
-      const indicators = document.querySelectorAll(".indicator");
-      indicators.forEach((indicator, index) => {
-        if (index < screenshots.length) {
-          indicator.style.display = "inline-block";
-        } else {
-          indicator.style.display = "none";
-        }
-      });
+      // Re-initialize slider functionality with new elements
+      initializeSlider();
     }
+  }
+
+  // Function to initialize slider functionality
+  function initializeSlider() {
+    const screenshots = document.querySelectorAll(".screenshot");
+    const indicators = document.querySelectorAll(".indicator");
+    const prevBtn = document.getElementById("prev-screenshot");
+    const nextBtn = document.getElementById("next-screenshot");
+    let currentIndex = 0;
+
+    // Function to show a specific screenshot
+    function showScreenshot(index) {
+      // Remove active class from all screenshots and indicators
+      screenshots.forEach((screenshot) =>
+        screenshot.classList.remove("active")
+      );
+      indicators.forEach((indicator) => indicator.classList.remove("active"));
+
+      // Add active class to the current screenshot and indicator
+      screenshots[index].classList.add("active");
+      indicators[index].classList.add("active");
+
+      // Update current index
+      currentIndex = index;
+    }
+
+    // Previous button click
+    prevBtn.addEventListener("click", () => {
+      let newIndex = currentIndex - 1;
+      if (newIndex < 0) {
+        newIndex = screenshots.length - 1; // Loop back to the end
+      }
+      showScreenshot(newIndex);
+    });
+
+    // Next button click
+    nextBtn.addEventListener("click", () => {
+      let newIndex = currentIndex + 1;
+      if (newIndex >= screenshots.length) {
+        newIndex = 0; // Loop back to the beginning
+      }
+      showScreenshot(newIndex);
+    });
+
+    // Indicator clicks
+    indicators.forEach((indicator, index) => {
+      indicator.addEventListener("click", () => {
+        showScreenshot(index);
+      });
+    });
+
+    // Auto-advance the slider every 5 seconds (optional)
+    const autoAdvance = setInterval(() => {
+      let newIndex = currentIndex + 1;
+      if (newIndex >= screenshots.length) {
+        newIndex = 0;
+      }
+      showScreenshot(newIndex);
+    }, 5000);
+
+    // Stop auto-advance when user interacts with the slider
+    const sliderElements = [prevBtn, nextBtn, ...indicators];
+    sliderElements.forEach((element) => {
+      element.addEventListener("click", () => {
+        clearInterval(autoAdvance);
+      });
+    });
   }
 
   // Function to update related projects
