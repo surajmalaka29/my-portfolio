@@ -69,7 +69,7 @@ const projectData = {
       "images/HMS/5.PNG",
       "images/HMS/6.PNG",
       "images/HMS/7.PNG",
-      "images/HMS/8.png",
+      "images/HMS/8.PNG",
     ],
     prevProject: "crasauto",
     nextProject: "flexin",
