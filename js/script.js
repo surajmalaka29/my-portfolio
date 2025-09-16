@@ -787,4 +787,132 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Load portfolio items on page load
   loadPortfolioItems();
+
+  // Magic Lighting Effect on Hero Section
+  function initMagicLightingEffect() {
+    const heroSection = document.getElementById("home");
+    const magicEffect = document.querySelector(".magic-lighting-effect");
+
+    if (!heroSection || !magicEffect) return;
+
+    // Create magic sparkle on mouse move
+    heroSection.addEventListener("mousemove", function (e) {
+      // Throttle the effect to prevent too many sparkles
+      if (Math.random() > 0.2) return;
+
+      const rect = heroSection.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      // Create sparkle element
+      const sparkle = document.createElement("div");
+      sparkle.className = "magic-sparkle";
+
+      // Random size and color variation
+      const size = Math.random() * 8 + 3; // 3px to 11px
+      const colors = [
+        "var(--primary-color)",
+        "rgba(255, 119, 0, 0.8)",
+        "rgba(172, 172, 172, 0.9)",
+      ];
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+
+      // Position the sparkle
+      sparkle.style.left = x + "px";
+      sparkle.style.top = y + "px";
+      sparkle.style.width = size + "px";
+      sparkle.style.height = size + "px";
+      sparkle.style.background = randomColor;
+      sparkle.style.position = "absolute";
+      sparkle.style.borderRadius = "50%";
+      sparkle.style.pointerEvents = "none";
+      sparkle.style.boxShadow = `0 0 ${size * 2}px ${randomColor}`;
+      sparkle.style.animation = "sparkleEffect 1s ease-out forwards";
+
+      // Add sparkle to magic effect container
+      magicEffect.appendChild(sparkle);
+
+      // Remove sparkle after animation completes
+      setTimeout(() => {
+        if (sparkle.parentNode) {
+          sparkle.parentNode.removeChild(sparkle);
+        }
+      }, 1000);
+    });
+
+    // Enhanced magic effect on click
+    heroSection.addEventListener("click", function (e) {
+      const rect = heroSection.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      // Create magical burst on click
+      for (let i = 0; i < 8; i++) {
+        setTimeout(() => {
+          const burst = document.createElement("div");
+          burst.className = "magic-burst";
+
+          const angle = i * 45 * (Math.PI / 180); // 45 degrees apart
+          const distance = 50 + Math.random() * 30;
+          const finalX = x + Math.cos(angle) * distance;
+          const finalY = y + Math.sin(angle) * distance;
+
+          burst.style.left = x + "px";
+          burst.style.top = y + "px";
+          burst.style.width = "6px";
+          burst.style.height = "6px";
+          burst.style.background = "var(--primary-color)";
+          burst.style.position = "absolute";
+          burst.style.borderRadius = "50%";
+          burst.style.pointerEvents = "none";
+          burst.style.boxShadow = "0 0 15px var(--primary-color)";
+          burst.style.animation = `magicBurst 1.2s ease-out forwards`;
+          burst.style.setProperty("--final-x", finalX + "px");
+          burst.style.setProperty("--final-y", finalY + "px");
+
+          magicEffect.appendChild(burst);
+
+          setTimeout(() => {
+            if (burst.parentNode) {
+              burst.parentNode.removeChild(burst);
+            }
+          }, 1200);
+        }, i * 50);
+      }
+    });
+
+    // Add CSS animations dynamically
+    const style = document.createElement("style");
+    style.textContent = `
+      @keyframes sparkleEffect {
+        0% {
+          transform: scale(0) rotate(0deg);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(1.5) rotate(180deg);
+          opacity: 0.8;
+        }
+        100% {
+          transform: scale(0) rotate(360deg);
+          opacity: 0;
+        }
+      }
+      
+      @keyframes magicBurst {
+        0% {
+          transform: translate(0, 0) scale(1);
+          opacity: 1;
+        }
+        100% {
+          transform: translate(calc(var(--final-x) - 50%), calc(var(--final-y) - 50%)) scale(0);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  // Initialize magic lighting effect
+  initMagicLightingEffect();
 });
