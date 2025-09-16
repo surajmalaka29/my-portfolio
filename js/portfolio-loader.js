@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Create individual project cards without grouping into rows
   projects.forEach((project) => {
     const cardHtml = `
-      <div class="project-card" data-category="${
+      <div class="project-card scroll-animation" data-category="${
         project.category
       }" style="display: block; opacity: 1;">
         <div class="project-image">
@@ -56,6 +56,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Initialize filter functionality
   initializeFilters();
+
+  // Initialize scroll animations for dynamically created elements
+  initializeScrollAnimations();
 });
 
 function initializeFilters() {
@@ -107,6 +110,47 @@ function initializeFilters() {
           card.style.display = "none";
         }
       });
+
+      // Re-initialize scroll animations after filtering
+      setTimeout(() => {
+        initializeScrollAnimations();
+      }, 200);
     });
   });
+}
+
+// Function to initialize scroll animations for dynamically created elements
+function initializeScrollAnimations() {
+  // Check if the scroll animation functions exist (from script.js)
+  if (typeof window.handleScrollAnimation === "function") {
+    window.handleScrollAnimation();
+  } else {
+    // Fallback scroll animation initialization
+    const scrollElements = document.querySelectorAll(".scroll-animation");
+
+    const elementInView = (el, percentageScroll = 100) => {
+      const elementTop = el.getBoundingClientRect().top;
+      return (
+        elementTop <=
+        (window.innerHeight || document.documentElement.clientHeight) *
+          (percentageScroll / 100)
+      );
+    };
+
+    const displayScrollElement = (element) => {
+      element.classList.add("scrolled");
+    };
+
+    const hideScrollElement = (element) => {
+      element.classList.remove("scrolled");
+    };
+
+    scrollElements.forEach((el) => {
+      if (elementInView(el, 100)) {
+        displayScrollElement(el);
+      } else {
+        hideScrollElement(el);
+      }
+    });
+  }
 }

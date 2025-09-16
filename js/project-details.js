@@ -106,18 +106,84 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Update navigation links
-    document.querySelector(
-      ".prev-project"
-    ).href = `project-details.html?project=${project.prevProject}`;
-    document.querySelector(
-      ".next-project"
-    ).href = `project-details.html?project=${project.nextProject}`;
+    updateNavigationLinks(projectId, project);
 
     // Update screenshots if different from default
     updateScreenshots(project.screenshots);
 
     // Update related projects
     updateRelatedProjects(projectId);
+  }
+
+  // Function to update navigation links
+  function updateNavigationLinks(currentProjectId, currentProject) {
+    const prevProjectBtn = document.querySelector(".prev-project");
+    const nextProjectBtn = document.querySelector(".next-project");
+
+    // Get all project IDs in order
+    const projectOrder = [
+      "flexin",
+      "crasauto",
+      "hms",
+      "codemize",
+      "flexinUI",
+      "crasautoUI",
+      "hmsUI",
+      "lsnursery",
+    ];
+
+    const currentIndex = projectOrder.indexOf(currentProjectId);
+
+    if (currentIndex !== -1) {
+      // Calculate previous and next indices with wraparound
+      const prevIndex =
+        currentIndex === 0 ? projectOrder.length - 1 : currentIndex - 1;
+      const nextIndex =
+        currentIndex === projectOrder.length - 1 ? 0 : currentIndex + 1;
+
+      const prevProjectId = projectOrder[prevIndex];
+      const nextProjectId = projectOrder[nextIndex];
+
+      // Update navigation links
+      if (prevProjectBtn) {
+        prevProjectBtn.href = `project-details.html?project=${prevProjectId}`;
+        console.log("Updated prev project link to:", prevProjectId);
+
+        // Add click event listener to ensure navigation works
+        prevProjectBtn.onclick = function (e) {
+          e.preventDefault();
+          window.location.href = `project-details.html?project=${prevProjectId}`;
+        };
+      }
+
+      if (nextProjectBtn) {
+        nextProjectBtn.href = `project-details.html?project=${nextProjectId}`;
+        console.log("Updated next project link to:", nextProjectId);
+
+        // Add click event listener to ensure navigation works
+        nextProjectBtn.onclick = function (e) {
+          e.preventDefault();
+          window.location.href = `project-details.html?project=${nextProjectId}`;
+        };
+      }
+    } else {
+      // Fallback: if project not found in order, use the data from project itself
+      if (currentProject.prevProject && prevProjectBtn) {
+        prevProjectBtn.href = `project-details.html?project=${currentProject.prevProject}`;
+        prevProjectBtn.onclick = function (e) {
+          e.preventDefault();
+          window.location.href = `project-details.html?project=${currentProject.prevProject}`;
+        };
+      }
+
+      if (currentProject.nextProject && nextProjectBtn) {
+        nextProjectBtn.href = `project-details.html?project=${currentProject.nextProject}`;
+        nextProjectBtn.onclick = function (e) {
+          e.preventDefault();
+          window.location.href = `project-details.html?project=${currentProject.nextProject}`;
+        };
+      }
+    }
   }
 
   // Function to update screenshots
@@ -157,6 +223,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Re-initialize slider functionality with new elements
       initializeSlider();
+
+      // Initialize scroll animations for new elements
+      if (typeof window.handleScrollAnimation === "function") {
+        setTimeout(() => {
+          window.handleScrollAnimation();
+        }, 100);
+      }
     }
   }
 
@@ -249,7 +322,7 @@ document.addEventListener("DOMContentLoaded", function () {
     relatedProjects.forEach((projectId) => {
       const project = projectData[projectId];
       const cardHtml = `
-        <div class="related-project-card">
+        <div class="related-project-card scroll-animation">
           <div class="related-project-image">
             <img src="${project.screenshots[0]}" alt="Related Project" />
             <div class="project-overlay">
@@ -261,5 +334,12 @@ document.addEventListener("DOMContentLoaded", function () {
       `;
       relatedProjectsGrid.innerHTML += cardHtml;
     });
+
+    // Initialize scroll animations for new related project cards
+    if (typeof window.handleScrollAnimation === "function") {
+      setTimeout(() => {
+        window.handleScrollAnimation();
+      }, 100);
+    }
   }
 });

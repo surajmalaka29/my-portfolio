@@ -438,22 +438,21 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Helper function to validate mobile number
- function isValidMobile(mobile) {
-   // Remove all non-digit characters
-   const cleanMobile = mobile.replace(/\D/g, "");
+  function isValidMobile(mobile) {
+    // Remove all non-digit characters
+    const cleanMobile = mobile.replace(/\D/g, "");
 
-   // Sri Lankan local format: must start with 0 and be exactly 10 digits
-   const sriLankaPattern = /^0\d{9}$/;
+    // Sri Lankan local format: must start with 0 and be exactly 10 digits
+    const sriLankaPattern = /^0\d{9}$/;
 
-   // International format: 8–15 digits (e.g., +94772658446)
-   const internationalPattern = /^\+?[1-9]\d{7,14}$/;
+    // International format: 8–15 digits (e.g., +94772658446)
+    const internationalPattern = /^\+?[1-9]\d{7,14}$/;
 
-   // Check both cases
-   return (
-     sriLankaPattern.test(cleanMobile) || internationalPattern.test(mobile)
-   );
- }
-
+    // Check both cases
+    return (
+      sriLankaPattern.test(cleanMobile) || internationalPattern.test(mobile)
+    );
+  }
 
   // Notification function
   function showNotification(message, type) {
@@ -555,7 +554,11 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   const handleScrollAnimation = () => {
-    scrollElements.forEach((el) => {
+    // Re-query scroll elements each time to include dynamically added ones
+    const currentScrollElements =
+      document.querySelectorAll(".scroll-animation");
+
+    currentScrollElements.forEach((el) => {
       if (elementInView(el, 100)) {
         displayScrollElement(el);
       } else {
@@ -571,8 +574,25 @@ document.addEventListener("DOMContentLoaded", function () {
     handleScrollAnimation();
   });
 
+  // Make handleScrollAnimation globally accessible for other scripts
+  window.handleScrollAnimation = handleScrollAnimation;
+
   // Initialize animations on load
   handleScrollAnimation();
+
+  // Function to re-initialize scroll animations for dynamically added elements
+  function initScrollAnimations() {
+    // Re-query scroll elements to include new ones
+    const newScrollElements = document.querySelectorAll(".scroll-animation");
+
+    newScrollElements.forEach((el) => {
+      if (elementInView(el, 100)) {
+        displayScrollElement(el);
+      } else {
+        hideScrollElement(el);
+      }
+    });
+  }
 
   // Make sure to trigger animations if the page loads directly on the skills section
   setTimeout(() => {
@@ -714,4 +734,57 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
+
+  // Load portfolio items from data.js
+  function loadPortfolioItems() {
+    if (typeof projectData === "undefined") {
+      console.error("Project data not loaded. Make sure data.js is included.");
+      return;
+    }
+
+    const portfolioGrid = document.getElementById("portfolio-grid");
+    if (!portfolioGrid) return;
+
+    // Get first 3 projects for homepage
+    const projectKeys = Object.keys(projectData);
+    const featuredProjects = projectKeys.slice(0, 3);
+
+    portfolioGrid.innerHTML = "";
+
+    featuredProjects.forEach((projectKey) => {
+      const project = projectData[projectKey];
+
+      // Create short description (first 150 characters + "...")
+      const shortDescription =
+        project.description.length > 150
+          ? project.description.substring(0, 150) + "..."
+          : project.description;
+
+      const portfolioItem = document.createElement("div");
+      portfolioItem.className = "portfolio-item scroll-animation";
+
+      portfolioItem.innerHTML = `
+        <div class="portfolio-image">
+          <img src="${project.screenshots[0]}" alt="${project.name}" />
+        </div>
+        <div class="portfolio-info">
+          <h3>${project.name}</h3>
+          <p>${shortDescription}</p>
+          <div class="portfolio-links">
+            <a href="project-details.html?project=${projectKey}" class="portfolio-link">
+              <i class="fa-solid fa-chevron-right"></i>
+            </a>
+          </div>
+        </div>
+      `;
+
+      portfolioGrid.appendChild(portfolioItem);
+    });
+
+    // Re-initialize scroll animations for new elements
+    initScrollAnimations();
+  }
+
+  // Load portfolio items on page load
+  loadPortfolioItems();
 });
