@@ -1474,6 +1474,15 @@ footer {
 
 /* Responsive Design */
 @media screen and (max-width: 1024px) {
+  /* Hide custom cursor on tablet and show default cursor */
+  body {
+    cursor: auto !important;
+  }
+
+  .cursor {
+    display: none !important;
+  }
+
   .name {
     font-size: 3rem;
   }
@@ -1494,6 +1503,15 @@ footer {
 }
 
 @media screen and (max-width: 768px) {
+  /* Hide custom cursor on mobile and show default cursor */
+  body {
+    cursor: auto !important;
+  }
+
+  .cursor {
+    display: none !important;
+  }
+
   .nav-links {
     position: fixed;
     top: 80px;
