@@ -68,12 +68,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Hide preloader when page is loaded
   window.addEventListener("load", function () {
-    // Add a delay to ensure the logo fill animation completes
+    // Shorter delay - just enough for animation to complete
     setTimeout(() => {
       preloader.classList.add("hidden");
       // Enable body scrolling
       document.body.style.overflow = "auto";
-    }, 3000); // Increased to 3 seconds to accommodate the full animation sequence
+    }, 1200); // Reduced to 1.2 seconds for faster page load
   });
 
   // Disable scrolling while preloader is active

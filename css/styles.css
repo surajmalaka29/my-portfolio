@@ -63,7 +63,7 @@
   stroke-width: 2;
   stroke-dasharray: 300;
   stroke-dashoffset: 300;
-  animation: dash 2s ease-in-out forwards;
+  animation: dash 1s ease-in-out forwards;
 }
 
 .logo-fill {
@@ -84,7 +84,7 @@
   transform-origin: center;
   transform: scale(0);
   opacity: 0;
-  animation: fill 1.5s ease-in-out 1.5s forwards;
+  animation: fill 0.8s ease-in-out 0.8s forwards;
 }
 
 .preloader-text {
