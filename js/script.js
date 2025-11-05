@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const contactForm = document.getElementById("contactForm");
   let cursor = document.querySelector(".cursor");
   const typingElement = document.querySelector(".typing");
-  const preloader = document.querySelector(".preloader");
 
   // Check if cursor element exists (will be null if not found)
   if (!cursor) {
@@ -65,35 +64,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // Uncomment the following line to enable smooth wheel scrolling
   // Caution: This can make the site feel less responsive for some users
   // window.addEventListener(wheelEvent, smoothScroll, wheelOpt);
-
-  // Hide preloader when page is loaded
-  window.addEventListener("load", function () {
-    // Shorter delay - just enough for animation to complete
-    setTimeout(() => {
-      preloader.classList.add("hidden");
-      // Enable body scrolling
-      document.body.style.overflow = "auto";
-    }, 1200); // Reduced to 1.2 seconds for faster page load
-  });
-
-  // Disable scrolling while preloader is active
-  document.body.style.overflow = "hidden";
-
-  // Create a more accurate SVG mask for your logo if needed
-  function updateLogoMask() {
-    // Try to get dimensions from the actual logo
-    const logoRef = document.querySelector(".preloader-logo-reference");
-    if (logoRef && logoRef.complete) {
-      const logoContainer = document.querySelector(".logo-container");
-      if (logoContainer) {
-        logoContainer.style.width = logoRef.width + "px";
-        logoContainer.style.height = logoRef.height + "px";
-      }
-    }
-  }
-
-  // Run this after images have loaded
-  window.addEventListener("load", updateLogoMask);
 
   // Typing animation for job title
   const jobTitles = [
