@@ -10,7 +10,7 @@ const projectData = {
     type: "Web Development",
     duration: "5 Months",
     category: "App Development",
-    githubLink: "https://github.com/surajmalaka29/Flex-in",
+    githubLink: "https://github.com/malaka-perera/Flex-in",
     screenshots: [
       "images/FlexIn/1.jpeg",
       "images/FlexIn/2.jpeg",
@@ -37,7 +37,7 @@ const projectData = {
     type: "Web App Development",
     duration: "4 Months",
     category: "App Development",
-    githubLink: "https://github.com/surajmalaka29/AutoMobile-Service-System",
+    githubLink: "https://github.com/malaka-perera/AutoMobile-Service-System",
     screenshots: [
       "images/Cras Auto System/1.jpeg",
       "images/Cras Auto System/2.jpeg",
@@ -60,7 +60,7 @@ const projectData = {
     type: "Desktop Application",
     duration: "1 Months",
     category: "App Development",
-    githubLink: "https://github.com/surajmalaka29/Hospital-Management-System",
+    githubLink: "https://github.com/malaka-perera/Hospital-Management-System",
     screenshots: [
       "images/HMS/1.PNG",
       "images/HMS/2.PNG",
@@ -85,7 +85,7 @@ const projectData = {
     type: "UI Design",
     duration: "1 Week",
     category: "UI / UX Design",
-    githubLink: "https://github.com/surajmalaka29/fullstack-web-app",
+    githubLink: "https://github.com/malaka-perera/fullstack-web-app",
     figmaLink:
       "https://www.figma.com/team_invite/redeem/HxLF4dTRv8xDPLbfl59a1l",
     screenshots: [
@@ -112,7 +112,7 @@ const projectData = {
     type: "UI Design",
     duration: "1 Months",
     category: "UI / UX Design",
-    githubLink: "https://github.com/surajmalaka29/fullstack-web-app",
+    githubLink: "https://github.com/malaka-perera/fullstack-web-app",
     figmaLink:
       "https://www.figma.com/team_invite/redeem/NfbYxkE5nvrsQC1cEQhg0n",
     screenshots: [
@@ -142,7 +142,7 @@ const projectData = {
     type: "UI Design",
     duration: "1 Months",
     category: "UI / UX Design",
-    githubLink: "https://github.com/surajmalaka29/ecommerce-platform",
+    githubLink: "https://github.com/malaka-perera/ecommerce-platform",
     figmaLink:
       "https://www.figma.com/team_invite/redeem/zz5KXfrDEpKQzotipSRCwe",
     screenshots: [
@@ -169,7 +169,7 @@ const projectData = {
     type: "UI Design",
     duration: "2 Weeks",
     category: "UI / UX Design",
-    githubLink: "https://github.com/surajmalaka29/ecommerce-platform",
+    githubLink: "https://github.com/malaka-perera/ecommerce-platform",
     figmaLink:
       "https://www.figma.com/team_invite/redeem/Exran3FaZxhnrLeYsDEI9D",
     screenshots: [
@@ -199,7 +199,7 @@ const projectData = {
     category: "UI / UX Design",
     figmaLink:
       "https://www.figma.com/team_invite/redeem/JvQKVPJwjtUWfhLoysiEQ3",
-    githubLink: "https://github.com/surajmalaka29/ecommerce-platform",
+    githubLink: "https://github.com/malaka-perera/ecommerce-platform",
     screenshots: [
       "images/UK Project/1.png",
       "images/UK Project/2.png",
@@ -223,7 +223,7 @@ const projectData = {
 //     type: "Graphic Design",
 //     duration: "Ongoing",
 //     category: "Graphic Design",
-//     githubLink: "https://github.com/surajmalaka29/graphic-design-portfolio",
+//     githubLink: "https://github.com/malaka-perera/graphic-design-portfolio",
 //     screenshots: [
 //       "images/flex'in.jpeg",
 //       "images/MacBook Air - 4.png",

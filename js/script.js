@@ -290,7 +290,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const mailtoBody = `From: ${name} (${email})${
           mobile ? `\nMobile: ${mobile}` : ""
         }\n\n${message}`;
-        const mailtoLink = `mailto:info@malakaperera.live?subject=${encodeURIComponent(
+        const mailtoLink = `mailto:info@malakaperera.me?subject=${encodeURIComponent(
           subject
         )}&body=${encodeURIComponent(mailtoBody)}`;
 
@@ -342,7 +342,7 @@ document.addEventListener("DOMContentLoaded", function () {
             console.error("Failed to send email:", error);
 
             // Fallback: Try to open email client
-            const mailtoLink = `mailto:info@malakaperera.live?subject=${encodeURIComponent(
+            const mailtoLink = `mailto:info@malakaperera.me?subject=${encodeURIComponent(
               subject
             )}&body=${encodeURIComponent(
               `From: ${name} (${email})\n\n${message}`
@@ -357,7 +357,7 @@ document.addEventListener("DOMContentLoaded", function () {
               showNotification("Opening your email client...", "success");
             } else {
               showNotification(
-                "Failed to send message. Please try again or contact us directly at info@malakaperera.live",
+                "Failed to send message. Please try again or contact us directly at info@malakaperera.me",
                 "error"
               );
             }
@@ -882,6 +882,17 @@ document.addEventListener("DOMContentLoaded", function () {
     `;
     document.head.appendChild(style);
   }
+
+  // Auto-update copyright year in footer
+  const currentYear = new Date().getFullYear();
+  document.querySelectorAll(".current-year").forEach((el) => {
+    el.textContent = currentYear;
+  });
+  document.querySelectorAll("footer p").forEach((p) => {
+    if (p.textContent.includes("©") && p.textContent.includes("Malaka Perera")) {
+      p.innerHTML = p.innerHTML.replace(/©\s*\d{4}/, `© <span class="current-year">${currentYear}</span>`);
+    }
+  });
 
   // Initialize magic lighting effect
   initMagicLightingEffect();
